@@ -40,7 +40,13 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
         refresh.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         refresh.attributedTitle = NSAttributedString(string: "Fetching new data...")
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(goHome))
+        let homeButton = UIButton(type: .custom)
+        let homeIcon = UIImage(systemName: "house")
+        homeButton.setImage(homeIcon, for: .normal)
+        homeButton.addTarget(self, action: #selector(goHome), for: .touchUpInside)
+        let barHomeButton = UIBarButtonItem(customView: homeButton)
+        
+        navigationItem.rightBarButtonItem = barHomeButton
     }
     
     
@@ -67,9 +73,9 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
         }
         
     }
-    
-    @objc
+   @objc
     func goHome() {
+        refreshString = homeURL
         loadData(url: homeURL)
     }
     
