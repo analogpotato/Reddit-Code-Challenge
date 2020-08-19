@@ -8,23 +8,45 @@
 
 import UIKit
 
-class SubredditListViewTableViewController: UITableViewController {
+class SubredditListViewTableViewController: UITableViewController, UISearchResultsUpdating {
     
     
     var list = [Post]()
-
+    
+    let homeURL = "https://www.reddit.com/.json"
+    let refresh = UIRefreshControl()
+    var refreshString = "https://www.reddit.com/.json"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        loadData()
+        configureView()
+        loadData(url: homeURL)
         
     }
     
     
-    func loadData() {
-        if let url = URL(string: "https://www.reddit.com/.json") {
+    func configureView() {
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search Subreddits"
+        navigationItem.searchController = search
+        
+        tableView.refreshControl = refresh
+        refresh.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        refresh.attributedTitle = NSAttributedString(string: "Fetching new data...")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(goHome))
+    }
+    
+    
+    func loadData(url: String) {
+        let url = url
+        if let url = URL(string: url) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     do {
@@ -39,15 +61,37 @@ class SubredditListViewTableViewController: UITableViewController {
                     }
                     
                 }
+                
             }.resume()
             
         }
         
     }
     
+    @objc
+    func goHome() {
+        loadData(url: homeURL)
+    }
+    
+    func searchSubreddit(urlString: String) {
+        let searchString = "https://www.reddit.com/r/\(urlString)/.json"
+        loadData(url: searchString)
+    }
     
     
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        searchSubreddit(urlString: text)
+        refreshString = text
+    }
     
+    @objc
+    func refreshData() {
+        loadData(url: refreshString)
+        DispatchQueue.main.async {
+            self.refresh.endRefreshing()
+        }
+    }
     
     
     // MARK: - Table view data source
@@ -95,11 +139,11 @@ class SubredditListViewTableViewController: UITableViewController {
         if segue.identifier == "moveToDetail" {
             if let detailVC = segue.destination as? DetailView {
                 let indexPath = tableView.indexPathForSelectedRow!
-                       let posts = list[indexPath.row]
+                let posts = list[indexPath.row]
                 detailVC.urlString = "\(posts.data.url)"
             }
         }
     }
-
+    
     
 }
