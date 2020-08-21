@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CFADBF9124EC570A0027C480 /* JSONFetchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFADBF9024EC570A0027C480 /* JSONFetchParser.swift */; };
+		CFADBF9124EC570A0027C480 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFADBF9024EC570A0027C480 /* Model.swift */; };
 		CFADBF9324EC948C0027C480 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFADBF9224EC948C0027C480 /* DetailView.swift */; };
 		CFE175E324EC4EB600E709BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE175E224EC4EB600E709BC /* AppDelegate.swift */; };
 		CFE175E524EC4EB600E709BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE175E424EC4EB600E709BC /* SceneDelegate.swift */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CFADBF9024EC570A0027C480 /* JSONFetchParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFetchParser.swift; sourceTree = "<group>"; };
+		CFADBF9024EC570A0027C480 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CFADBF9224EC948C0027C480 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CFE175DF24EC4EB600E709BC /* Reddit Code Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit Code Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE175E224EC4EB600E709BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 				CFE175EB24EC4EB700E709BC /* Assets.xcassets */,
 				CFE175ED24EC4EB700E709BC /* LaunchScreen.storyboard */,
 				CFE175F024EC4EB700E709BC /* Info.plist */,
-				CFADBF9024EC570A0027C480 /* JSONFetchParser.swift */,
+				CFADBF9024EC570A0027C480 /* Model.swift */,
 				CFADBF9224EC948C0027C480 /* DetailView.swift */,
 			);
 			path = "Reddit Code Challenge";
@@ -147,7 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFADBF9124EC570A0027C480 /* JSONFetchParser.swift in Sources */,
+				CFADBF9124EC570A0027C480 /* Model.swift in Sources */,
 				CFADBF9324EC948C0027C480 /* DetailView.swift in Sources */,
 				CFE175F924EC50FC00E709BC /* ListViewCell.swift in Sources */,
 				CFE175E324EC4EB600E709BC /* AppDelegate.swift in Sources */,

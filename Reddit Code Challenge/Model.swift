@@ -9,22 +9,6 @@
 import Foundation
 
 
-
-public struct RedditList: Codable {
-    
-    public var posts: [RedditPost]
-}
-
-
-public struct RedditPost: Codable {
-
-    public let title: String
-    public let url: URL
-    
-}
-
-
-
 struct Model : Decodable {
     let kind: String
     let data: ListingData
@@ -38,14 +22,14 @@ struct ListingData: Decodable {
     let modhash: String
 }
 
-struct ChildData : Decodable {
+struct PostData : Decodable {
     let title: String?
     let subreddit: String?
     let score: Int
     let url: URL
 }
 struct Post: Decodable {
-    let data: ChildData
+    let data: PostData
     let kind: String?
 
 }
