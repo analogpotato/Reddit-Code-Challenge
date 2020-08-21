@@ -8,42 +8,49 @@
 
 import UIKit
 
-class SubredditListViewTableViewController: UITableViewController, UISearchResultsUpdating {
+class SubredditListViewTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     
-    var list = [Post]()
+    var postList = [Post]()
     
     let homeURL = "https://www.reddit.com/.json"
-    let refresh = UIRefreshControl()
+    let refreshController = UIRefreshControl()
+    let search = UISearchController(searchResultsController: nil)
+    
+    
     var refreshString = "https://www.reddit.com/.json"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemOrange]
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemOrange]
+        
         configureView()
         loadData(url: homeURL)
         
     }
+ 
     
     
     func configureView() {
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        let search = UISearchController(searchResultsController: nil)
+        search.searchBar.delegate = self
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "Search Subreddits"
         navigationItem.searchController = search
         
-        tableView.refreshControl = refresh
-        refresh.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        refresh.attributedTitle = NSAttributedString(string: "Fetching new data...")
+        tableView.refreshControl = refreshController
+        refreshController.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        refreshController.attributedTitle = NSAttributedString(string: "Fetching new data...")
         
         let homeButton = UIButton(type: .custom)
         let homeIcon = UIImage(systemName: "house")
         homeButton.setImage(homeIcon, for: .normal)
         homeButton.addTarget(self, action: #selector(goHome), for: .touchUpInside)
+        homeButton.tintColor = UIColor.systemOrange
         let barHomeButton = UIBarButtonItem(customView: homeButton)
         
         navigationItem.rightBarButtonItem = barHomeButton
@@ -57,7 +64,7 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
                 if let data = data {
                     do {
                         let jsonData = try JSONDecoder().decode(Model.self, from: data)
-                        self.list = jsonData.data.children
+                        self.postList = jsonData.data.children
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -73,29 +80,40 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
         }
         
     }
-   @objc
-    func goHome() {
-        refreshString = homeURL
-        loadData(url: homeURL)
-    }
+
     
     func searchSubreddit(urlString: String) {
         let searchString = "https://www.reddit.com/r/\(urlString)/.json"
         loadData(url: searchString)
+        print("Searching this subreddit: \(searchString)")
     }
-    
+
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
-        searchSubreddit(urlString: text)
-        refreshString = text
+        print("Text that will be searched \(text)")
     }
+    
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        refreshString = text
+        searchSubreddit(urlString: text)
+        print("\(refreshString)")
+  }
+    
+    @objc
+     func goHome() {
+         refreshString = homeURL
+         loadData(url: homeURL)
+     }
     
     @objc
     func refreshData() {
-        loadData(url: refreshString)
+        print("This is the refreshed text: \(refreshString)")
+        searchSubreddit(urlString: refreshString)
         DispatchQueue.main.async {
-            self.refresh.endRefreshing()
+            self.refreshController.endRefreshing()
         }
     }
     
@@ -104,15 +122,17 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
     //
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return self.postList.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return list.count
+        return 1
     }
     
-    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,32 +140,29 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
             fatalError("Cannot create cell")
         }
         
-        //        print("cells loaded")
-        let posts = list[indexPath.row]
+        let posts = postList[indexPath.section]
+        
+//        cell.contentView.setCardView()
+
+//        cell.contentView.layer.cornerRadius = 15
+//        cell.contentView.layer.masksToBounds = true
+
+        
         cell.postTitle.text = posts.data.title
         cell.postSubreddit.text = posts.data.subreddit
         cell.postVoteCount.text = "\(posts.data.score)"
         cell.postURL.text = "\(posts.data.url)"
         
-        
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You selected cell # \(indexPath.row)!")
-        
-        let indexPath = tableView.indexPathForSelectedRow!
-        let posts = list[indexPath.row]
-        
-        print ("\(posts.data.url)")
-        
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "moveToDetail" {
             if let detailVC = segue.destination as? DetailView {
                 let indexPath = tableView.indexPathForSelectedRow!
-                let posts = list[indexPath.row]
+                let posts = postList[indexPath.section]
                 detailVC.urlString = "\(posts.data.url)"
             }
         }
@@ -153,3 +170,24 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
     
     
 }
+
+extension UIView {
+
+    func setCardView(){
+        
+        layer.backgroundColor = UIColor.red.cgColor
+        layer.cornerRadius = 30
+        
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.blue.cgColor
+        
+        layer.shadowOpacity = 0.5
+        layer.shadowColor =  UIColor.lightGray.cgColor
+        layer.shadowRadius = 5.0
+        layer.shadowOffset = CGSize(width:5, height: 5)
+        
+        layer.masksToBounds = true
+    }
+}
+
+
