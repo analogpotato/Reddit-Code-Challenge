@@ -24,7 +24,7 @@ Within the tableview, I created a `loadData` function that pulls from any string
 
 I created a "Home" button at the top using an SF Symbol to designate the "reset" back to the core `www.reddit.com/.json` URL so the user can return to the main feed.
 
-The Model for the Reddit data was created by looking at the parsed JSON via a parser website where, with my knowledge of the site, I was able to determine the quantifiable sources for data and create a matching model. The data is nested from `Model` -> `Listing` -> `Post` -> `PostData` with the core of the data being pulled from the `PostData` to display the URL, title, vote count and subreddit name in each tableview cell when the data loads.
+The Model for the Reddit data was created by looking at the parsed JSON via a parser website where, with my knowledge of the site, I was able to determine the quantifiable sources for data and create a matching model. The data is nested from `Model` -> `Listing` -> `Post` -> `PostData` with the core of the data being pulled from `PostData` to display the URL, title, vote count and subreddit name in each tableview cell when the data loads.
 
 On tap of each post cell, it pulls the URL from the post and displays it with a `WKWebView` which required me to import `WebKit` into that detail. 
 
