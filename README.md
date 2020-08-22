@@ -3,7 +3,7 @@
 
 This is my take home challenge for an interview process. 
 
-<img src="https://user-images.githubusercontent.com/42280875/90965687-4a7e6b80-e47f-11ea-9faf-8a9bbfe6e085.png" width ="100" height = "100">
+<p align="center"><img src="https://user-images.githubusercontent.com/42280875/90965687-4a7e6b80-e47f-11ea-9faf-8a9bbfe6e085.png" width ="100" height = "100"></p>
 
 
 ## Objective
@@ -24,7 +24,7 @@ Within the tableview, I created a `loadData` function that pulls from any string
 
 I created a "Home" button at the top using an SF Symbol to designate the "reset" back to the core `www.reddit.com/.json` URL so the user can return to the main feed.
 
-The Model for the Reddit data was created by looking at the parsed JSON via a parser website where, with my knowledge of the site, I was able to determine the quantifiable sources for data and create a matching model. The data is nested from `Model` -> `Listing` -> `Post` -> `PostData` with the core of the data being pulled from the `PostData` to display the URL, title, vote count and subreddit name in each tableview cell on the data load.
+The Model for the Reddit data was created by looking at the parsed JSON via a parser website where, with my knowledge of the site, I was able to determine the quantifiable sources for data and create a matching model. The data is nested from `Model` -> `Listing` -> `Post` -> `PostData` with the core of the data being pulled from the `PostData` to display the URL, title, vote count and subreddit name in each tableview cell when the data loads.
 
 On tap of each post cell, it pulls the URL from the post and displays it with a `WKWebView` which required me to import `WebKit` into that detail. 
 
@@ -37,9 +37,9 @@ For the design elements, I decided to use most of the colors associated with Red
 Below are screenshots of the app running on an iPhone 11 Pro Max:
 
 
-<img src="https://user-images.githubusercontent.com/42280875/90965541-d2fc0c80-e47d-11ea-99ae-1c3dc1fd36f7.png" width ="200" height = "425"><img src="https://user-images.githubusercontent.com/42280875/90965542-d4c5d000-e47d-11ea-9985-e65095cf0792.png" width ="200" height = "425"><img src="https://user-images.githubusercontent.com/42280875/90965544-d7282a00-e47d-11ea-9f99-dadfcb32f620.png" width ="200" height = "425">
+<p align="center"><img src="https://user-images.githubusercontent.com/42280875/90965541-d2fc0c80-e47d-11ea-99ae-1c3dc1fd36f7.png" width ="200" height = "425"><img src="https://user-images.githubusercontent.com/42280875/90965542-d4c5d000-e47d-11ea-9985-e65095cf0792.png" width ="200" height = "425"><img src="https://user-images.githubusercontent.com/42280875/90965544-d7282a00-e47d-11ea-9f99-dadfcb32f620.png" width ="200" height = "425"></p>
 
-<img src="https://user-images.githubusercontent.com/42280875/90965687-4a7e6b80-e47f-11ea-9faf-8a9bbfe6e085.png" width ="100" height = "100">
+
 
 
 
