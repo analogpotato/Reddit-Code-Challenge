@@ -36,9 +36,9 @@ Below are screenshots of the app running on an iPhone 11 Pro Max:
 
 
 <img src="https://user-images.githubusercontent.com/42280875/90965541-d2fc0c80-e47d-11ea-99ae-1c3dc1fd36f7.png" width ="200" height = "425">
+<img src="https://user-images.githubusercontent.com/42280875/90965542-d4c5d000-e47d-11ea-9985-e65095cf0792.png" width ="200" height = "425">
+<img src="https://user-images.githubusercontent.com/42280875/90965544-d7282a00-e47d-11ea-9f99-dadfcb32f620.png" width ="200" height = "425">
 
-![iPhone 11 Pro Max- detail web view](https://user-images.githubusercontent.com/42280875/90965542-d4c5d000-e47d-11ea-9985-e65095cf0792.png)
-![iPhone 11 Pro Max - Light Mode main feed](https://user-images.githubusercontent.com/42280875/90965544-d7282a00-e47d-11ea-9f99-dadfcb32f620.png)
 ![Icon](https://user-images.githubusercontent.com/42280875/90965548-e1e2bf00-e47d-11ea-9c0a-f73cc2a7dbe0.png)
 
 
