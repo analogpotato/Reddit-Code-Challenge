@@ -1,5 +1,5 @@
 //
-//  JSONFetchParser.swift
+//  Model.swift
 //  Reddit Code Challenge
 //
 //  Created by Frank Foster on 8/18/20.

@@ -43,6 +43,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CFA09ED024F1A68E00908F60 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CFE175F624EC4F6A00E709BC /* SubredditListViewTableViewController.swift */,
+				CFE175F824EC50FC00E709BC /* ListViewCell.swift */,
+				CFADBF9224EC948C0027C480 /* DetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CFA09ED124F1A6AC00908F60 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFADBF9024EC570A0027C480 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CFE175D624EC4EB600E709BC = {
 			isa = PBXGroup;
 			children = (
@@ -62,16 +80,14 @@
 		CFE175E124EC4EB600E709BC /* Reddit Code Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				CFE175E224EC4EB600E709BC /* AppDelegate.swift */,
+				CFA09ED124F1A6AC00908F60 /* Model */,
+				CFA09ED024F1A68E00908F60 /* Views */,
 				CFE175E424EC4EB600E709BC /* SceneDelegate.swift */,
-				CFE175F624EC4F6A00E709BC /* SubredditListViewTableViewController.swift */,
-				CFE175F824EC50FC00E709BC /* ListViewCell.swift */,
-				CFE175E824EC4EB600E709BC /* Main.storyboard */,
+				CFE175E224EC4EB600E709BC /* AppDelegate.swift */,
 				CFE175EB24EC4EB700E709BC /* Assets.xcassets */,
+				CFE175E824EC4EB600E709BC /* Main.storyboard */,
 				CFE175ED24EC4EB700E709BC /* LaunchScreen.storyboard */,
 				CFE175F024EC4EB700E709BC /* Info.plist */,
-				CFADBF9024EC570A0027C480 /* Model.swift */,
-				CFADBF9224EC948C0027C480 /* DetailView.swift */,
 			);
 			path = "Reddit Code Challenge";
 			sourceTree = "<group>";
