@@ -1,4 +1,4 @@
-# Reddit-Code-Challenge
+# Reddit Code Challenge
 
 
 This is my take home challenge for an interview process. 
