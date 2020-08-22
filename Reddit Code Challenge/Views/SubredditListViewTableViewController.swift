@@ -23,10 +23,8 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureView()
         loadData(url: homeURL)
-        
     }
     
     //MARK: Configure View
@@ -56,7 +54,6 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
         let barHomeButton = UIBarButtonItem(customView: homeButton)
         
         navigationItem.rightBarButtonItem = barHomeButton
-        
     }
     
     //MARK: Load Data
@@ -85,21 +82,19 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
     func searchSubreddit(urlString: String) {
         let searchString = "https://www.reddit.com/r/\(urlString)/.json"
         loadData(url: searchString)
-        print("Searching this subreddit: \(searchString)")
     }
     
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
-        print("Text that will be searched \(text)")
+        print(text)
     }
-    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
         refreshString = text
         searchSubreddit(urlString: text)
-        print("\(refreshString)")
+        
     }
     
     //MARK: Refresh Functions
@@ -112,7 +107,6 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
     
     @objc
     func refreshData() {
-        print("This is the refreshed text: \(refreshString)")
         searchSubreddit(urlString: refreshString)
         DispatchQueue.main.async {
             self.refreshController.endRefreshing()
@@ -121,14 +115,12 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
     
     
     // MARK: - Table view data source
-    //
+
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return self.postList.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 1
     }
     
@@ -142,7 +134,6 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
         }
         
         let posts = postList[indexPath.section]
-        
         
         cell.postTitle.text = posts.data.title
         cell.postSubreddit.text = posts.data.subreddit
@@ -161,7 +152,6 @@ class SubredditListViewTableViewController: UITableViewController, UISearchResul
             }
         }
     }
-    
 }
 
 

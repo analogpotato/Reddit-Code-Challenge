@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-struct Model : Decodable {
+struct Model: Decodable {
     let kind: String
     let data: ListingData
 }
@@ -22,16 +21,16 @@ struct ListingData: Decodable {
     let modhash: String
 }
 
-struct PostData : Decodable {
+struct PostData: Decodable {
     let title: String?
     let subreddit: String?
     let score: Int
     let url: URL
 }
+
 struct Post: Decodable {
     let data: PostData
     let kind: String?
-
 }
 
 
