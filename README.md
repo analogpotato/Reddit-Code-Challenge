@@ -28,7 +28,11 @@ On tap of each post cell, it pulls the URL from the post and displays it with a 
 
 ## Design
 
-For the design elements, I decided to use most of the colors associated with Reddit, but in the iOS 13 introduced system colors for dark mode compatibility. I used `systemOrange` for the title, "home" button and vote count. I used `systemBlue` for the subreddit name as well as `label` and `secondaryLabel` for the post title and URL respectively. The app icon I created in Sketch using their iOS app icon template.
+For the design elements, I decided to use most of the colors associated with Reddit, but in the iOS 13 introduced system colors for dark mode compatibility. I used `systemOrange` for the title, "home" button and vote count. I used `systemBlue` for the subreddit name as well as `label` and `secondaryLabel` for the post title and URL respectively. The app icon I created in Sketch using their iOS app icon template. I also decided to use the `Avenir` family of fonts to create a distictive and minimal style to the wording.
+
+## Images
+
+Below are screenshots of the app running on an iPhone 11 Pro Max:
 
 
 
