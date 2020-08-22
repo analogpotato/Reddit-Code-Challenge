@@ -3,6 +3,8 @@
 
 This is my take home challenge for an interview process. 
 
+<img src="https://user-images.githubusercontent.com/42280875/90965548-e1e2bf00-e47d-11ea-9c0a-f73cc2a7dbe0.png" width ="100" height = "100">
+
 
 ## Objective
 
@@ -39,7 +41,7 @@ Below are screenshots of the app running on an iPhone 11 Pro Max:
 
 <img src="https://user-images.githubusercontent.com/42280875/90965548-e1e2bf00-e47d-11ea-9c0a-f73cc2a7dbe0.png" width ="100" height = "100">
 
-![Icon](https://user-images.githubusercontent.com/42280875/90965548-e1e2bf00-e47d-11ea-9c0a-f73cc2a7dbe0.png)
+
 
 
 
